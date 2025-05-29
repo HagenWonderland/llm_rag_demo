@@ -2,8 +2,6 @@ import chromadb
 from chromadb.utils import embedding_functions
 from PyPDF2 import PdfReader
 import os
-#import API_key
-#OPENAI_API_KEY = API_key.OPENAI_API_KEY
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def load_pdf_chunks(pdf_path):
