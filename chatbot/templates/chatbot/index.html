@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>智能幕僚</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e; /* 深色背景 */
+            color: #e0e0e0; /* 淺色文字 */
+        }
+        #app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* 佔滿整個視窗高度 */
+        }
+        h2.chat-title {
+            text-align: center;
+            color: #cccccc;
+            padding: 15px 0;
+            margin: 0;
+            font-weight: 300; /* 較細的字體 */
+            font-size: 1.2em;
+            background-color: #252526; /* 標題背景色 */
+            border-bottom: 1px solid #333333;
+        }
+        #chatbox {
+            flex-grow: 1; /* 佔據可用空間 */
+            overflow-y: auto; /* 超出內容時顯示滾動條 */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message-container {
+            display: flex;
+            margin-bottom: 12px;
+            max-width: 100%;
+        }
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            max-width: 75%; /* 訊息泡泡最大寬度 */
+        }
+        .user-container {
+            justify-content: flex-end; /* 使用者訊息靠右 */
+        }
+        .user-message {
+            background-color: #005c97; /* 使用者訊息背景色 (例如：深藍) */
+            color: white;
+            border-bottom-right-radius: 5px; /* 營造對話泡泡尾巴效果 */
+        }
+        .ai-container {
+            justify-content: flex-start; /* AI 訊息靠左 */
+        }
+        .ai-message {
+            background-color: #3a3a3a; /* AI 訊息背景色 (例如：深灰) */
+            color: #e0e0e0;
+            border-bottom-left-radius: 5px; /* 營造對話泡泡尾巴效果 */
+        }
+        #user-input-container {
+            padding: 15px 20px;
+            background-color: #1e1e1e; /* 輸入區域背景色 */
+            border-top: 1px solid #333333;
+        }
+        #user-input {
+            display: flex;
+            max-width: 700px; /* 輸入框和按鈕的最大寬度 */
+            margin: 0 auto; /* 置中 */
+        }
+        #question {
+            flex-grow: 1;
+            padding: 12px 18px;
+            border: 1px solid #444;
+            border-radius: 22px; /* 圓角輸入框 */
+            background-color: #2d2d2d; /* 輸入框背景色 */
+            color: #e0e0e0; /* 輸入文字顏色 */
+            font-size: 1em;
+            margin-right: 10px;
+        }
+        #question:focus {
+            outline: none;
+            border-color: #007acc; /* 焦點時邊框顏色 */
+        }
+        #question::placeholder {
+            color: #777;
+        }
+        #send-btn {
+            padding: 12px 20px;
+            background-color: #007acc; /* 按鈕背景色 */
+            color: white;
+            border: none;
+            border-radius: 22px; /* 圓角按鈕 */
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+        #send-btn:hover {
+            background-color: #005fa3; /* 滑鼠懸停時按鈕顏色 */
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <h2 class="chat-title">智能幕僚</h2>
+        <div id="chatbox"></div>
+        <div id="user-input-container">
+            <div id="user-input">
+                <input id="question" type="text" placeholder="請輸入你的問題...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'chatbot/chat.js' %}"></script>
+</body>
+</html>

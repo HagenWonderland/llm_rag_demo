@@ -1,0 +1,13 @@
+# .gitignore
+__pycache__/
+*.pyc
+db.sqlite3
+chroma_store/
+API_key.py 
+.env
+*.log
+*.pot
+*.pyo
+*.swp
+.DS_Store
+.ipynb_checkpoints
